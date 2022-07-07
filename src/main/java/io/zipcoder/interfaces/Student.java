@@ -8,6 +8,11 @@ public class Student extends Person implements Learner{
         this.totalStudyTime = totalStudyTime;
     }
 
+    public Student(long id, String name) {
+        super(id, name);
+        this.totalStudyTime = 0;
+    }
+
     public Double getTotalStudyTime() {
         return this.totalStudyTime;
     }
