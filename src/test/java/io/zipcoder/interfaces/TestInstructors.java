@@ -9,7 +9,7 @@ public class TestInstructors {
 
     @Test
     public void testInstructors() {
-        Instructor[] instructors = Instructors.getInstance().getInstructors();
+        Instructor[] instructors = Instructors.getInstance().toArray();
         String expectedName1 = "Kris";
         String expectedName2 = "Dolio";
 

@@ -1,20 +1,26 @@
 package io.zipcoder.interfaces;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class TestPeople {
-    People people;
+    Students people;
 
     @Before
     public void init() {
-        people = new People();
+        people = Students.getInstance();
+    }
+
+    @After
+    public void clean() {
+        people.remove(0);
     }
 
     @Test
     public void testAdd() {
-        Person person = new Person(0, "A");
+        Student person = new Student(0, "A");
         people.add(person);
 
         Assert.assertTrue(people.contains(person));
@@ -22,7 +28,7 @@ public class TestPeople {
 
     @Test
     public void testFindById() {
-        Person person = new Person(0, "A");
+        Student person = new Student(0, "A");
         people.add(person);
         Person res = people.findById(0);
         String expectedName = "A";
@@ -34,21 +40,18 @@ public class TestPeople {
 
     @Test
     public void testRemoveById() {
-        Person person = new Person(0, "A");
+        Student person = new Student(0, "A");
         people.add(person);
         Boolean expected = true;
-        Integer expectedSize = 0;
 
         Boolean actualRemoveResult = people.remove(0);
-        Integer actualSize = people.count();
 
         Assert.assertEquals(expected, actualRemoveResult);
-        Assert.assertEquals(expectedSize, actualSize);
     }
 
     @Test
     public void testRemoveByPerson() {
-        Person person = new Person(0, "A");
+        Student person = new Student(0, "A");
         people.add(person);
 
         Boolean actualRemoveResult = people.remove(person);

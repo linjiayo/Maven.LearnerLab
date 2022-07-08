@@ -1,14 +1,16 @@
 package io.zipcoder.interfaces;
 
-public final class Instructors extends People {
-    private static final Instructors INSTANCE;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-    private Instructor[] instructor;
+public final class Instructors extends People<Instructor> {
+    private static final Instructors INSTANCE;
 
     private Instructors(){
         Instructor in1 = new Instructor(0, "Kris");
         Instructor in2 = new Instructor(1, "Dolio");
-        instructor = new Instructor[] {in1, in2};
+        personList = new ArrayList<>(Arrays.asList(in1, in2));
     }
 
     static {
@@ -26,8 +28,21 @@ public final class Instructors extends People {
         return INSTANCE;
     }
 
-    public Instructor[] getInstructors() {
-        return instructor;
+    public List<Instructor> getInstructors() {
+        return personList;
+    }
+
+    public Instructor getInstructor(long id) {
+        for (Instructor ins : INSTANCE.toArray()) {
+            if (ins.getId() == id) {
+                return ins;
+            }
+        }
+        return null;
+    }
+    @Override
+    public Instructor[] toArray() {
+        return personList.toArray(new Instructor[0]);
     }
 
 }
