@@ -9,9 +9,11 @@ public class ZipCodeWilmingtonTest {
     @Test
     public void testHostLectureByTeacherInstance() {
         Teacher teacher = new Instructor(3, "Z");
+        Teacher kris = Educator.KRIS;
         Double expectedStudyHours = 2.0;
         ZipCodeWilmington instance = ZipCodeWilmington.getInstance();
-        instance.hostLecture(teacher, 10);
+        instance.hostLecture(teacher, 5);
+        instance.hostLecture(kris,  5);
 
         for (Student s : instance.getStudents().getStudents()) {
             Double actualStudyHours = s.getTotalStudyTime();
